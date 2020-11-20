@@ -15,7 +15,7 @@ def login(username,password):
     driver.find_element_by_xpath(Elements.EMAIL_TEXTBOX).send_keys(username)
     driver.find_element_by_xpath(Elements.PASSWORD_TEXTBOX).send_keys(password)
     driver.find_element_by_xpath(Elements.LOGIN_BUTTON).click()
-    time.sleep(10)
+    time.sleep(5)
 
 def scrap(title="Developer",type=0,location = "Bengaluru",pages=-1,):
     '''
@@ -32,6 +32,8 @@ def scrap(title="Developer",type=0,location = "Bengaluru",pages=-1,):
     titleObj = driver.find_element_by_xpath(Elements.SEARCH_BAR)
     titleObj.click()
     titleObj.send_keys(title)
+    time.sleep(3)
+    titleObj.send_keys(Keys.ARROW_DOWN + Keys.ENTER)
 
     time.sleep(3)
 
@@ -56,4 +58,4 @@ def scrap(title="Developer",type=0,location = "Bengaluru",pages=-1,):
 
 if __name__ == "__main__":
     login(credentials.USERNAME,credentials.PASSWORD)
-    scrap()
+    scrap(type=2)

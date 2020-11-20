@@ -6,7 +6,7 @@ LOGIN_BUTTON = "//button[@name='submit']"
 
 #When Logged In
 SEARCH_BAR = "//input[@id='sc.keyword']"
-TYPE = "//form[@id='scBar']//div[2]//div"
+TYPE = "//form[@id='scBar']//div//div[2]"
 TYPE_OPTIONS_LIST = "//form[@id='scBar']//div[2]//div//div[contains(@class,'dropdownOptions ')]//div[@class='dropDownOptionsContainer']//ul//li"
 LOCATION = "//input[@id='sc.location']"
 SEARCH_BUTTON = "//button[@type='submit']"
