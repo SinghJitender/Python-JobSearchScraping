@@ -1,0 +1,5 @@
+HOME_PAGE = "https://www.glassdoor.co.in/"
+SIGN_IN_BUTTON = "//a[@data-ga-lbl='Sign In']"
+EMAIL_TEXTBOX = "//input[@id='userEmail']"
+PASSWORD_TEXTBOX = "//input[@id='userPassword']"
+LOGIN_BUTTON = "//button[@name='submit']"
