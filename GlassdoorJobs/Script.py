@@ -1,5 +1,6 @@
 import GlassdoorJobs.Elements as Elements
 from selenium import webdriver
+import GlassdoorJobs.Credentials as credentials
 driver = webdriver.Chrome(executable_path=r"C:\Users\Jitender\PycharmProjects\JobScraping\chromedriver.exe")
 
 def login(username,password):
@@ -11,5 +12,8 @@ def login(username,password):
     driver.find_element_by_xpath(Elements.PASSWORD_TEXTBOX).send_keys(password)
     driver.find_element_by_xpath(Elements.LOGIN_BUTTON).click()
 
+def scrapJobs(title="Developer",location = "Bengaluru"):
+
+
 if __name__ == "__main__":
-    login("jitu.singh95@gmail.com","")
+    login(credentials.USERNAME,credentials.PASSWORD)
