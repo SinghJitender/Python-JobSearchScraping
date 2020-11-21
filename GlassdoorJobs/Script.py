@@ -68,7 +68,7 @@ def scarp():
     Fetches data for searched items from glassdoor
     :return: None
     '''
-    wb = xlsxwriter.Workbook("Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")))
+    wb = xlsxwriter.Workbook(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")))
     sheet = wb.add_worksheet()
     sheet.write_row(0,0,data = ["ID", "Title", "Company", "Location" "Ratings", "Link", "Match Percentage"])
 
