@@ -68,9 +68,9 @@ def scarp():
     Fetches data for searched items from glassdoor
     :return: None
     '''
-    wb = xlsxwriter.Workbook("Job Search %s" % str(datetime.datetime.now()))
+    wb = xlsxwriter.Workbook("Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")))
     sheet = wb.add_worksheet()
-    sheet.write(0,0,["ID", "Title", "Company", "Ratings", "Link", "Match Percentage"])
+    sheet.write_row(0,0,data = ["ID", "Title", "Company", "Location" "Ratings", "Link", "Match Percentage"])
 
     listOfItems = driver.find_elements_by_xpath(Elements.LIST_OF_ITEMS)
     listOfLinks = driver.find_elements_by_xpath(Elements.LIST_JOB_LINK)
@@ -82,19 +82,20 @@ def scarp():
         item.click()
         if driver.find_elements_by_xpath(Elements.USELESS_SPAN):
             driver.find_element_by_xpath(Elements.USELESS_SPAN).click()
-            time.sleep(2)
+            time.sleep(1)
 
         companyObj = driver.find_element_by_xpath(Elements.COMPANY_NAME)
         if len(driver.find_elements_by_xpath(Elements.RATINGS)) > 0:
             ratingObj = driver.find_element_by_xpath(Elements.RATINGS)
+            rating = ratingObj.text
         else:
-            ratingObj = None
+            rating = None
         jobTitleObj = driver.find_element_by_xpath(Elements.TITLE)
         jobLocationObj = driver.find_element_by_xpath(Elements.JOB_LOCATION)
         mainTextObj = driver.find_element_by_xpath(Elements.MAIN_TEXT)
         value = mainTextObj.text
         logging.info("%s \n\n" % value)
-        sheet.write(itemPos+1,0,[itemPos, jobTitleObj.text, companyObj.text, ratingObj.text, link, "0"])
+        sheet.write_row(itemPos+1,0,data = [itemPos, jobTitleObj.text, companyObj.text, jobLocationObj.text, rating, link, "0"])
         itemPos += 1
 
     wb.close()
