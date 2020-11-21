@@ -12,6 +12,16 @@ LOCATION = "//input[@id='sc.location']"
 SEARCH_BUTTON = "//button[@type='submit']"
 
 USLESS_OVERLAY = "//div[contains(@class,'gd-ui-overlay')]"
+USELESS_SPAN = "//div[@id='JAModal']//span[@alt='Close']"
 
+#Scrap data
 MAIN_TEXT = "//div[@class='jobDescriptionContent desc']"
-LIST_OF_JOBS = "//ul[contains(@class,'jlGrid')]//li"
+LIST_OF_ITEMS = "//ul[contains(@class,'jlGrid')]//li"
+LIST_JOB_LINK = "//ul[contains(@class,'jlGrid')]//li//a[@class='jobLink']"
+
+#Each Listing
+COMPANY_NAME = "(//div[@class='employerName'])[1]"
+RATINGS = "(//div[@class='employerName']//span)[1]"
+TITLE = "(//div[@class='title'])[1]"
+JOB_LOCATION = "(//div[@class='location'])[1]"
+

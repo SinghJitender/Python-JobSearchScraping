@@ -3,11 +3,17 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import GlassdoorJobs.Credentials as credentials
 import time
+import logging
+import xlsxwriter
+import datetime
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 driver = webdriver.Chrome(executable_path=r"C:\Users\Jitender\PycharmProjects\JobScraping\chromedriver.exe")
 driver.maximize_window()
 
-def login(username,password):
+
+def login(username, password):
     driver.get(Elements.HOME_PAGE)
     driver.implicitly_wait(5)
     driver.find_element_by_xpath(Elements.SIGN_IN_BUTTON).click()
@@ -17,17 +23,30 @@ def login(username,password):
     driver.find_element_by_xpath(Elements.LOGIN_BUTTON).click()
     time.sleep(5)
 
-def scrap(title="Developer",type=0,location = "Bengaluru",pages=-1,):
-    '''
 
+def searchFor(title="Developer", type=0, location="Bengaluru", pages=-1, ):
+    '''
     :param title: str - What to search for
     :param type: index of item in list [JOBS, COMPANIES, SALARIES, INTERVIEWS]
     :param location: str - Location where to search
     :param pages: str - no. of pages to scroll (-1 means all)
     :return:
     '''
-    if(len(driver.find_elements_by_xpath(Elements.USLESS_OVERLAY))>0):
+    if (len(driver.find_elements_by_xpath(Elements.USLESS_OVERLAY)) > 0):
         driver.find_element_by_xpath(Elements.USLESS_OVERLAY).click()
+
+    typeObj = driver.find_element_by_xpath(Elements.TYPE)
+    typeObj.click()
+    typeListObj = driver.find_elements_by_xpath(Elements.TYPE_OPTIONS_LIST)[type]
+    typeListObj.click()
+
+    locationObj = driver.find_element_by_xpath(Elements.LOCATION)
+    locationObj.click()
+    locationObj.send_keys(Keys.CONTROL + 'a' + Keys.DELETE)
+    locationObj.send_keys(location)
+    time.sleep(3)
+    locationObj.send_keys(Keys.ARROW_DOWN + Keys.ENTER)
+
     time.sleep(3)
     titleObj = driver.find_element_by_xpath(Elements.SEARCH_BAR)
     titleObj.click()
@@ -37,25 +56,51 @@ def scrap(title="Developer",type=0,location = "Bengaluru",pages=-1,):
 
     time.sleep(3)
 
-    typeObj = driver.find_element_by_xpath(Elements.TYPE)
-    typeObj.click()
-    typeListObj = driver.find_elements_by_xpath(Elements.TYPE_OPTIONS_LIST)[type]
-    typeListObj.click()
+    # driver.find_element_by_xpath(Elements.SEARCH_BUTTON).click()
 
-    time.sleep(3)
+    time.sleep(5)
+    if (type in [0, 1]):
+        scarp()
 
-    locationObj = driver.find_element_by_xpath(Elements.LOCATION)
-    locationObj.click()
-    locationObj.send_keys(Keys.CONTROL+'a'+Keys.DELETE)
-    locationObj.send_keys(location)
-    time.sleep(3)
-    locationObj.send_keys(Keys.ARROW_DOWN + Keys.ENTER)
 
-    time.sleep(3)
+def scarp():
+    '''
+    Fetches data for searched items from glassdoor
+    :return: None
+    '''
+    wb = xlsxwriter.Workbook("Job Search %s" % str(datetime.datetime.now()))
+    sheet = wb.add_worksheet()
+    sheet.write(0,0,["ID", "Title", "Company", "Ratings", "Link", "Match Percentage"])
 
-    driver.find_element_by_xpath(Elements.SEARCH_BUTTON).click()
+    listOfItems = driver.find_elements_by_xpath(Elements.LIST_OF_ITEMS)
+    listOfLinks = driver.find_elements_by_xpath(Elements.LIST_JOB_LINK)
+    logging.info("len of listOfItems %s" % len(listOfItems))
+
+    itemPos = 0
+    for item in listOfItems:
+        link = listOfLinks[itemPos].get_attribute("href")
+        item.click()
+        if driver.find_elements_by_xpath(Elements.USELESS_SPAN):
+            driver.find_element_by_xpath(Elements.USELESS_SPAN).click()
+            time.sleep(2)
+
+        companyObj = driver.find_element_by_xpath(Elements.COMPANY_NAME)
+        if len(driver.find_elements_by_xpath(Elements.RATINGS)) > 0:
+            ratingObj = driver.find_element_by_xpath(Elements.RATINGS)
+        else:
+            ratingObj = None
+        jobTitleObj = driver.find_element_by_xpath(Elements.TITLE)
+        jobLocationObj = driver.find_element_by_xpath(Elements.JOB_LOCATION)
+        mainTextObj = driver.find_element_by_xpath(Elements.MAIN_TEXT)
+        value = mainTextObj.text
+        logging.info("%s \n\n" % value)
+        sheet.write(itemPos+1,0,[itemPos, jobTitleObj.text, companyObj.text, ratingObj.text, link, "0"])
+        itemPos += 1
+
+    wb.close()
 
 
 if __name__ == "__main__":
-    login(credentials.USERNAME,credentials.PASSWORD)
-    scrap(type=2)
+    logging.info("Logs Working")
+    login(credentials.USERNAME, credentials.PASSWORD)
+    searchFor()
