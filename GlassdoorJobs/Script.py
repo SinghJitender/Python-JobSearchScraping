@@ -69,6 +69,7 @@ def scarp():
     :return: None
     '''
     wb = xlsxwriter.Workbook(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")))
+    file = open(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_Data_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")),"w")
     sheet = wb.add_worksheet()
     sheet.write_row(0,0,data = ["ID", "Title", "Company", "Location" "Ratings", "Link", "Match Percentage"])
 
@@ -94,11 +95,14 @@ def scarp():
         jobLocationObj = driver.find_element_by_xpath(Elements.JOB_LOCATION)
         mainTextObj = driver.find_element_by_xpath(Elements.MAIN_TEXT)
         value = mainTextObj.text
-        logging.info("%s \n\n" % value)
+        file.write("%d - %s - %s \n" % (itemPos, jobTitleObj.text, companyObj.text))
+        file.writelines(value)
+        file.write("\n\n\n")
         sheet.write_row(itemPos+1,0,data = [itemPos, jobTitleObj.text, companyObj.text, jobLocationObj.text, rating, link, "0"])
         itemPos += 1
 
     wb.close()
+    file.close()
 
 
 if __name__ == "__main__":
