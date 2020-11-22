@@ -69,7 +69,7 @@ def scarp():
     :return: None
     '''
     wb = xlsxwriter.Workbook(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")))
-    file = open(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_Data_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")),"w")
+    file = open(r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\Job_Search_Data_%s.txt" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p")),"w",encoding="utf-8")
     sheet = wb.add_worksheet()
     sheet.write_row(0,0,data = ["ID", "Title", "Company", "Location" "Ratings", "Link", "Match Percentage"])
 
