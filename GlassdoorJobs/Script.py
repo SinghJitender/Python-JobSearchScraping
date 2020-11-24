@@ -110,3 +110,4 @@ if __name__ == "__main__":
     logging.info("Started Logging")
     login(credentials.USERNAME, credentials.PASSWORD)
     searchFor()
+    logging.info("Finished")
