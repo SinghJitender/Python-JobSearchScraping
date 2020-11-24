@@ -97,7 +97,8 @@ def scarp():
         value = mainTextObj.text
         file.write("%d - %s - %s \n" % (itemPos, jobTitleObj.text, companyObj.text))
         file.writelines(value)
-        file.write("\n\n\n")
+        file.write("\n\n")
+        file.write("-"*100)
         sheet.write_row(itemPos+1,0,data = [itemPos, jobTitleObj.text, companyObj.text, jobLocationObj.text, rating, link, "0"])
         itemPos += 1
 
@@ -106,6 +107,6 @@ def scarp():
 
 
 if __name__ == "__main__":
-    logging.info("Logs Working")
+    logging.info("Started Logging")
     login(credentials.USERNAME, credentials.PASSWORD)
     searchFor()

@@ -21,13 +21,16 @@ if __name__ == '__main__':
     # print(r.text)
     # #print(c.text)
     # #print(c.title.text)
-    import xlsxwriter
-    import datetime
-    filename = r"Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p"))
-    location = r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\%s" % filename
-    wb = xlsxwriter.Workbook(location)
-    sheet = wb.add_worksheet()
-    sheet.write_row(0,0,data=['ID', 'Title', 'Company', 'Ratings', 'Link', 'Match Percentage'])
-    wb.close()
 
+    #
+    # import xlsxwriter
+    # import datetime
+    # filename = r"Job_Search_%s.xlsx" % str(datetime.datetime.now().strftime("%Y_%m_%d_%I_%M_%p"))
+    # location = r"C:\Users\Jitender\PycharmProjects\JobScraping\Data\%s" % filename
+    # wb = xlsxwriter.Workbook(location)
+    # sheet = wb.add_worksheet()
+    # sheet.write_row(0,0,data=['ID', 'Title', 'Company', 'Ratings', 'Link', 'Match Percentage'])
+    # wb.close()
+
+    print("-"*50)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
