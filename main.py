@@ -32,5 +32,11 @@ if __name__ == '__main__':
     # sheet.write_row(0,0,data=['ID', 'Title', 'Company', 'Ratings', 'Link', 'Match Percentage'])
     # wb.close()
 
-    print("-"*50)
+    #print("-"*50)
+
+    import matplotlib.pyplot as plt
+    x = [1,2,3,4,5,6,7]
+    y = [2,4,6,8,10,12,14]
+    plt.plot(x,y)
+    plt.show()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
