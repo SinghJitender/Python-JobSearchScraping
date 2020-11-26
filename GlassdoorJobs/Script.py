@@ -105,6 +105,7 @@ def scarp():
     wb.close()
     file.close()
 
+
 if __name__ == "__main__":
     logging.info("Started Logging")
     login(credentials.USERNAME, credentials.PASSWORD)
