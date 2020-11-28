@@ -40,6 +40,7 @@ if __name__ == '__main__':
     # plt.plot(x,y)
     # plt.show()
 
-    with open("C:\\Users\\Jitender\\PycharmProjects\\JobScraping\\Data\\Job_Search_2020_11_23_01_54_AM.xlsx",errors="ignore") as file:
-        file.read()
+    with open("C:\\Users\\Jitender\\PycharmProjects\\JobScraping\\Data\\Job_Search_Data_2020_11_23_01_54_AM.txt") as file:
+        p = file.read()
+        print(p)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
