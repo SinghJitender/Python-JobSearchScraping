@@ -34,9 +34,12 @@ if __name__ == '__main__':
 
     #print("-"*50)
 
-    import matplotlib.pyplot as plt
-    x = [1,2,3,4,5,6,7]
-    y = [2,4,6,8,10,12,14]
-    plt.plot(x,y)
-    plt.show()
+    # import matplotlib.pyplot as plt
+    # x = [1,2,3,4,5,6,7]
+    # y = [2,4,6,8,10,12,14]
+    # plt.plot(x,y)
+    # plt.show()
+
+    with open("C:\\Users\\Jitender\\PycharmProjects\\JobScraping\\Data\\Job_Search_2020_11_23_01_54_AM.xlsx",errors="ignore") as file:
+        file.read()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
