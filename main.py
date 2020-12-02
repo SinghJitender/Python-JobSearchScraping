@@ -48,4 +48,7 @@ if __name__ == '__main__':
     li = np.array([[10,20,30],[40,50,60]])
     print(li)
     print(type(li))
+    li2 = np.array(np.random.randn(5))
+    print(li2)
+    print(type(li2))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
