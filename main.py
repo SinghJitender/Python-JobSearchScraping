@@ -51,4 +51,7 @@ if __name__ == '__main__':
     li2 = np.array(np.random.randn(5))
     print(li2)
     print(type(li2))
+    li3 = np.linspace(10,20)
+    print(li3)
+    print(type(li3))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
