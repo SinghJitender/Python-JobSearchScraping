@@ -39,8 +39,13 @@ if __name__ == '__main__':
     # y = [2,4,6,8,10,12,14]
     # plt.plot(x,y)
     # plt.show()
+    #
+    # with open("C:\\Users\\Jitender\\PycharmProjects\\JobScraping\\Data\\Job_Search_Data_2020_11_23_01_54_AM.txt") as file:
+    #     p = file.read()
+    #     print(p)
 
-    with open("C:\\Users\\Jitender\\PycharmProjects\\JobScraping\\Data\\Job_Search_Data_2020_11_23_01_54_AM.txt") as file:
-        p = file.read()
-        print(p)
+    import numpy as np
+    li = np.array([[10,20,30],[40,50,60]])
+    print(li)
+    print(type(li))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
