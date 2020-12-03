@@ -54,4 +54,9 @@ if __name__ == '__main__':
     # li3 = np.linspace(10,20)
     # print(li3)
     # print(type(li3))
+
+    import pandas as pd
+    li = pd.array([1,2,3,4,5])
+    print(type(li))
+    print(li)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
