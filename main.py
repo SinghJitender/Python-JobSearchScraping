@@ -44,14 +44,14 @@ if __name__ == '__main__':
     #     p = file.read()
     #     print(p)
 
-    import numpy as np
-    li = np.array([[10,20,30],[40,50,60]])
-    print(li)
-    print(type(li))
-    li2 = np.array(np.random.randn(5))
-    print(li2)
-    print(type(li2))
-    li3 = np.linspace(10,20)
-    print(li3)
-    print(type(li3))
+    # import numpy as np
+    # li = np.array([[10,20,30],[40,50,60]])
+    # print(li)
+    # print(type(li))
+    # li2 = np.array(np.random.randn(5))
+    # print(li2)
+    # print(type(li2))
+    # li3 = np.linspace(10,20)
+    # print(li3)
+    # print(type(li3))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
