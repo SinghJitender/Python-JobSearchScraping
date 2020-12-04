@@ -62,4 +62,5 @@ if __name__ == '__main__':
 
     df = pd.DataFrame([[1,2],[3,4],[5,6],[7,8]],index=["A","B","C","D"],columns=["Apple","Banana"])
     print(df)
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
