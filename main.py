@@ -59,7 +59,6 @@ if __name__ == '__main__':
     #li = pd.array([1,2,3,4,5])
     #print(type(li))
     #print(li)
-
     df = pd.DataFrame([[1,2],[3,4],[5,6],[7,9]],index=["A","B","C","D"],columns=["Apple","Banana"])
     print(df)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
