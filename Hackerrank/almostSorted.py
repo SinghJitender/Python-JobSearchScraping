@@ -26,8 +26,6 @@ def almostSorted(arr):
             if (arr[i]<arr[i+2]) and arr[i+1]>arr[i-1]:
                 result = 1; count += 1
                 indexj = i+1; valj = arr[i+1]
-
-
             elif (arr[i]):
 
     if count == 0:
