@@ -9,7 +9,6 @@ import sys
 
 # Complete the countSort function below.
 def countSort(arr):
-    print(arr)
     x = dict()
     y = set()
     for i in range(len(arr)/2):
@@ -20,10 +19,10 @@ def countSort(arr):
         else:
             x[i[0]] = [i[1]]
             y.add(i[0])
-    print(x)
-    print(y)
-    sorted(y)
-    print(y)
+
+    for i in sorted(y):
+        for j in x[i]:
+            print(j, end=" ")
 
 if __name__ == '__main__':
     n = int(input().strip())
