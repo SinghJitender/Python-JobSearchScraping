@@ -12,40 +12,47 @@ import sys
 def almostSorted(arr):
     arr.insert(0,-1)
     arr.append(1000001)
-    result = 0
-    count = 0
-    vali = -1
-    valj = -1
-    indexi = -1
-    indexj = -1
+    tempNums = []
+    tempIndexes = []
     for i in range(1,len(arr)-1):
-        if arr[i]<arr[i+1]:
-            indexi = i+1; vali = arr[i+1]
-        if arr[i]>arr[i+1]:
-            indexj = i; valj = arr[i]
-            if (arr[i]<arr[i+2]) and arr[i+1]>arr[i-1]:
-                result = 1; count += 1
-                indexj = i+1; valj = arr[i+1]
-            elif (arr[i]):
+        if arr[i-1] < arr[i] and arr[i] <arr[i+1] :
+            pass
+        else:
+            tempNums.append(arr[i])
+            tempIndexes.append(i)
 
-    if count == 0:
-        print("yes")
-    elif count == 1:
-        if result == 1:
+    descOrder = True
+    for i in range(len(tempNums) - 1):
+        if not tempNums[i] > tempNums[i + 1]:
+            descOrder = False
+
+    if (descOrder):
+        if arr[tempIndexes[0] - 1] < tempNums[-1] and arr[tempIndexes[-1] + 1] > tempNums[0] and len(tempNums) > 2:
             print("yes")
-            print("swap %d %d" % (i, i + 1))
-        if result == 2:
+            print("reverse %d %d" % (tempIndexes[0], tempIndexes[-1]))
+        elif arr[tempIndexes[0] - 1] < tempNums[-1] and arr[tempIndexes[-1] + 1] > tempNums[0] and len(tempNums) == 2:
             print("yes")
-            print("reverse %d %d"%(indexi,indexj))
+            print("swap %d %d" % (tempIndexes[0], tempIndexes[-1]))
+        else:
+            print("no")
     else:
-        print("no")
-
-
-
-
-    print(tempNums)
-    print(tempIndexes)
-
+        if(len(tempNums) == 4):
+            temp1 = tempNums[0]
+            temp2 = tempNums[-1]
+            arr[tempIndexes[0]] = temp2
+            arr[tempIndexes[-1]] = temp1
+            aescorder = True
+            for i in range(len(arr)-1):
+                if not arr[i] < arr[i+1]:
+                    aescorder = False
+                    break;
+            if aescorder:
+                print("yes")
+                print("swap %d %d"%(tempIndexes[0],tempIndexes[-1]))
+            else :
+                print("no")
+        else:
+            print("no")
 
 
 if __name__ == '__main__':
