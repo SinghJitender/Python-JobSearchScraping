@@ -39,7 +39,7 @@ if __name__ == '__main__':
                     healthy[lenKey].update({key: health[x]})
             else:
                 healthy[lenKey] = {genes[x]: health[x]}
-        #print(healthy)
+        print(healthy)
         #print(healthy)
         temp = 0;
         #print(d)
